@@ -12,6 +12,10 @@ RUN npm run build
 
 FROM nginx
 
+# normally, in dev, used for developer communication purposes 
+# elasticbeanstalk will use this though and create a mapping for traffic on this port.
+EXPOSE 80
+
 # only copies over the result of the npm run build command
 # everything else is dumped.
 COPY --from=builder /app/build /usr/share/nginx/html
